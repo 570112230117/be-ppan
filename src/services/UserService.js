@@ -8,3 +8,13 @@ exports.doService = async (body) => {
     return null;
   }
 };
+exports.findByEmail = async (email) => {
+
+  try {
+    const result = await userRepository.findByEmail(email);
+    return result;
+  } catch (error) {
+    console.log(">>> error", error);
+    return null;
+  }
+};

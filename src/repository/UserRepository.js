@@ -20,4 +20,17 @@ exports.findAll = async () => {
   });
 };
 
+exports.findByEmail = async (email) => {
+  const queryString = 'select * from ppan_user where email = \'' + email + "' ";
 
+  return new Promise((res, rej) => {
+    // console.log(queryString);
+    client.query(queryString, (err, resultdata) => {
+      if (err) {
+        rej(err.message);
+      } else {
+        res(resultdata.rows);
+      }
+    });
+  });
+};
